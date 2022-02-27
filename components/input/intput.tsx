@@ -1,9 +1,9 @@
 import {
-  Code,
   Input,
   InputGroup,
   InputLeftElement,
   InputRightElement,
+  Kbd,
 } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
@@ -58,9 +58,11 @@ const InputDefault = (props: Props) => {
       <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em">
         <RiSearch2Line />
       </InputLeftElement>
-      <Input ref={inputRef} placeholder={placeholder} />
-      <InputRightElement width={"80px"}>
-        <Code p="5px 15px">Ctrl+F</Code>
+      <Input pr={"110px"} ref={inputRef} placeholder={placeholder} />
+      <InputRightElement width={"95px"}>
+        <Kbd mr={1}>Ctrl</Kbd>
+        <Kbd mr={1}>+</Kbd>
+        <Kbd mr={5}>F</Kbd>
       </InputRightElement>
     </InputGroup>
   );
