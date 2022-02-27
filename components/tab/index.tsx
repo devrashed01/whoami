@@ -1,33 +1,10 @@
-import {
-  Code,
-  HStack,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  InputRightElement,
-  Tab,
-  TabList,
-} from "@chakra-ui/react";
-import React, { useEffect, useRef } from "react";
-import { RiSearch2Line } from "react-icons/ri";
+import { HStack, Tab, TabList } from "@chakra-ui/react";
+import { InputStyles } from "components/input";
+import React from "react";
 
 type Props = {};
 
 const MainTabs = (props: Props) => {
-  const inputRef = useRef<HTMLInputElement | null>(null);
-  useEffect(() => {
-    document.addEventListener("keydown", (e) => {
-      if (e.code === "F3" || (e.ctrlKey && e.code === "KeyF")) {
-        if (document.activeElement === inputRef.current) {
-          console.info("%c YOU ARE IN FOCUSED=>>!", "color: #bada55");
-          return true;
-        } else if (inputRef?.current) {
-          e.preventDefault();
-          inputRef.current.focus();
-        }
-      }
-    });
-  }, []);
   return (
     <HStack spacing={8}>
       <TabList border={"none"}>
@@ -35,19 +12,7 @@ const MainTabs = (props: Props) => {
         <StyledTab label="Works" />
         <StyledTab label="Blog" />
       </TabList>
-      <InputGroup bgColor={"#fff"}>
-        <InputLeftElement
-          pointerEvents="none"
-          color="gray.300"
-          fontSize="1.2em"
-        >
-          <RiSearch2Line />
-        </InputLeftElement>
-        <Input ref={inputRef} placeholder="Search" />
-        <InputRightElement width={"80px"}>
-          <Code p="5px 15px">Ctrl+F</Code>
-        </InputRightElement>
-      </InputGroup>
+      <InputStyles.default />
     </HStack>
   );
 };
