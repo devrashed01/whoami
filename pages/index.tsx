@@ -6,11 +6,11 @@ import {
   TabPanels,
   Tabs,
 } from "@chakra-ui/react";
+import HeroContent from "components/heroContent";
+import SkillsView from "components/skills";
+import MainTabs from "components/tab";
 import type { NextPage } from "next";
 import * as React from "react";
-import HeroContent from "../components/heroContent";
-import SkillsView from "../components/skills";
-import MainTabs from "../components/tab";
 
 const Home: NextPage = () => {
   return (
