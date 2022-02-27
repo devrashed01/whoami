@@ -30,10 +30,10 @@ const Home: NextPage = () => {
                 <TabPanel p={0}>
                   <SkillsView />
                 </TabPanel>
-                <TabPanel>
+                <TabPanel p={0}>
                   <ProjectsView />
                 </TabPanel>
-                <TabPanel>
+                <TabPanel p={0}>
                   <BlogView />
                 </TabPanel>
               </TabPanels>
