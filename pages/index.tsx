@@ -6,6 +6,7 @@ import {
   TabPanels,
   Tabs,
 } from "@chakra-ui/react";
+import BlogView from "components/blogs";
 import HeroContent from "components/heroContent";
 import ProjectsView from "components/projects";
 import SkillsView from "components/skills";
@@ -33,7 +34,7 @@ const Home: NextPage = () => {
                   <ProjectsView />
                 </TabPanel>
                 <TabPanel>
-                  <p>three!</p>
+                  <BlogView />
                 </TabPanel>
               </TabPanels>
             </Tabs>
