@@ -7,6 +7,7 @@ import {
   Tabs,
 } from "@chakra-ui/react";
 import HeroContent from "components/heroContent";
+import ProjectsView from "components/projects";
 import SkillsView from "components/skills";
 import MainTabs from "components/tab";
 import type { NextPage } from "next";
@@ -29,7 +30,7 @@ const Home: NextPage = () => {
                   <SkillsView />
                 </TabPanel>
                 <TabPanel>
-                  <p>two!</p>
+                  <ProjectsView />
                 </TabPanel>
                 <TabPanel>
                   <p>three!</p>
