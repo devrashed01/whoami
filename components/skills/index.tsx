@@ -52,7 +52,7 @@ const SkillsView = (props: Props) => {
                   <Skeleton width={"150px"} height="20px" />
                 </p>
               </div>
-              <p className="ml-auto text-white self-end border border-blue-400 p-1 px-2  rounded-sm text-xs">
+              <p className="ml-auto text-white self-end p-1 px-2  rounded-sm text-xs">
                 <Skeleton width={150} height="20px" />
               </p>
             </div>
