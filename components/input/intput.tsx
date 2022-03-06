@@ -8,9 +8,12 @@ import {
 import { useEffect, useRef, useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 
-type Props = {};
+type Props = {
+  onChange: (arg0: IChangeHandlerProps) => void;
+  value: string;
+};
 
-const InputDefault = (props: Props) => {
+const InputDefault = ({ onChange, value }: Props) => {
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [placeholder, setPlaceholder] = useState<string>("");
 
@@ -58,7 +61,13 @@ const InputDefault = (props: Props) => {
       <InputLeftElement pointerEvents="none" color="gray.300" fontSize="1.2em">
         <RiSearch2Line />
       </InputLeftElement>
-      <Input pr={"110px"} ref={inputRef} placeholder={placeholder} />
+      <Input
+        pr={"110px"}
+        ref={inputRef}
+        value={value}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
       <InputRightElement width={"95px"}>
         <Kbd mr={1}>Ctrl</Kbd>
         <Kbd mr={1}>+</Kbd>

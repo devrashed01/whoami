@@ -19,7 +19,6 @@ const SkillsView = (props: Props) => {
   const { data, isLoading, isError, error } = useSkill();
 
   if (isError) {
-    console.log(error, "error");
     return <ErrorView />;
   }
   if (isLoading) {
