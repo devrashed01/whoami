@@ -2,6 +2,7 @@ import { Box, Heading, Progress, SimpleGrid, Skeleton } from "@chakra-ui/react";
 import ErrorView from "components/error";
 import { ISkill, useSkill } from "queries";
 import React from "react";
+import Avatar from "react-avatar";
 import { AiOutlineClockCircle } from "react-icons/ai";
 
 type Props = {};
@@ -71,7 +72,7 @@ const SkillsView = (props: Props) => {
     <SimpleGrid columns={2} spacing={5}>
       {data &&
         data?.length > 0 &&
-        data?.map((skill) => <Skill key={skill.id} skill={skill} />)}
+        data?.map((skill) => <Skill key={skill._id} skill={skill} />)}
     </SimpleGrid>
   );
 };
@@ -97,15 +98,19 @@ function Skill({ skill }: { skill: ISkill }) {
       </Heading>
 
       <div className="mt-8 flex items-center gap-4">
-        <div className="h-12 w-12 rounded-lg bg-white text-primary text-xl font-semibold grid place-items-center uppercase">
-          {skill.creator}
-        </div>
+        <Avatar
+          size="55"
+          color="white"
+          fgColor="blue"
+          round={"5px"}
+          name={skill.creator}
+        />
         <div>
           <h5 className="text-blue-300 text-md mb-1">Created By</h5>
           <p className="font-medium text-md text-white">{skill.creator}</p>
         </div>
         <p className="ml-auto text-white self-end border border-blue-400 p-1 px-2  rounded-sm text-xs">
-          <AiOutlineClockCircle className="inline-block" /> {skill.ReleasDate}
+          <AiOutlineClockCircle className="inline-block" /> {skill.release_date}
         </p>
       </div>
       <div className="flex items-center mt-3">
@@ -114,11 +119,11 @@ function Skill({ skill }: { skill: ISkill }) {
           bgColor={"#1175da"}
           sx={{ ">div": { bgColor: "#fff" } }}
           height={1}
-          value={skill.progress_rate}
+          value={skill.progress}
           className="flex-1 mr-5"
         />
         <span className="text-blue-400 text-md font-medium">
-          {skill.progress_rate}%
+          {skill.progress}%
         </span>
       </div>
     </Box>

@@ -22,21 +22,35 @@ const Home: NextPage = () => {
           <HeroContent name="Rashed." profession="FrontEnd Engineer." />
         </GridItem>
         <GridItem>
-          <div className="h-full bg-[#F3F6F9] p-5">
+          <div className="max-h-screen overflow-hidden bg-[#F3F6F9] p-5">
             <Tabs>
               <MainTabs />
 
-              <TabPanels mt="50px">
-                <TabPanel p={0}>
-                  <SkillsView />
-                </TabPanel>
-                <TabPanel p={0}>
-                  <ProjectsView />
-                </TabPanel>
-                <TabPanel p={0}>
-                  <BlogView />
-                </TabPanel>
-              </TabPanels>
+              <div
+                style={{ height: "calc(100vh - 110px)" }}
+                className="relative w-full h-ca overflow-hidden"
+              >
+                <TabPanels
+                  sx={{
+                    overflowY: "auto",
+                    pos: "absolute",
+                    h: "100%",
+                    w: "calc(100% + 15px)",
+                    pr: "15px",
+                  }}
+                  mt="50px"
+                >
+                  <TabPanel p={0}>
+                    <SkillsView />
+                  </TabPanel>
+                  <TabPanel p={0}>
+                    <ProjectsView />
+                  </TabPanel>
+                  <TabPanel p={0}>
+                    <BlogView />
+                  </TabPanel>
+                </TabPanels>
+              </div>
             </Tabs>
           </div>
         </GridItem>

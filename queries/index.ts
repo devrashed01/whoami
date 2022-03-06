@@ -3,12 +3,12 @@ import { useQuery } from "react-query";
 import { axiosErrorHandler } from "utils/errorHandler";
 
 export interface ISkill {
-  id: number;
+  _id: string;
   name: string;
   description: string;
+  release_date: string;
   creator: string;
-  progress_rate: number;
-  ReleasDate: string;
+  progress: number;
 }
 
 export const useSkill = () => {
@@ -16,7 +16,7 @@ export const useSkill = () => {
     "fetch-user",
     async () => {
       try {
-        const resp = await privateRequest.get("/skils-api");
+        const resp = await privateRequest.get("/skills");
         return resp.data?.data;
       } catch (error) {
         axiosErrorHandler(error);
