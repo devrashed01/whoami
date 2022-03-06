@@ -83,11 +83,14 @@ function Skill({ skill }: { skill: ISkill }) {
   return (
     <Box
       bg="linear-gradient(to right bottom, rgb(0, 127, 255), rgb(0, 89, 178) 120%)"
-      p={5}
+      px={5}
+      pt={5}
+      pb={"125px"}
       shadow="md"
       borderWidth="1px"
       flex="1"
       borderRadius="md"
+      position={"relative"}
     >
       <Heading color="#fff" fontSize="2xl" mb={4}>
         {skill.name}
@@ -96,35 +99,37 @@ function Skill({ skill }: { skill: ISkill }) {
       <Heading color="#fff" fontSize="md" fontWeight={500}>
         {skill.description}
       </Heading>
-
-      <div className="mt-8 flex items-center gap-4">
-        <Avatar
-          size="55"
-          color="white"
-          fgColor="blue"
-          round={"5px"}
-          name={skill.creator}
-        />
-        <div>
-          <h5 className="text-blue-300 text-md mb-1">Created By</h5>
-          <p className="font-medium text-md text-white">{skill.creator}</p>
+      <div className="absolute left-0 bottom-3 w-full px-5">
+        <div className="mt-8 flex items-center gap-4">
+          <Avatar
+            size="55"
+            color="white"
+            fgColor="blue"
+            round={"5px"}
+            name={skill.creator}
+          />
+          <div>
+            <h5 className="text-blue-300 text-md mb-1">Created By</h5>
+            <p className="font-medium text-md text-white">{skill.creator}</p>
+          </div>
+          <p className="ml-auto text-white self-end border border-blue-400 p-1 px-2  rounded-sm text-xs">
+            <AiOutlineClockCircle className="inline-block" />{" "}
+            {skill.release_date}
+          </p>
         </div>
-        <p className="ml-auto text-white self-end border border-blue-400 p-1 px-2  rounded-sm text-xs">
-          <AiOutlineClockCircle className="inline-block" /> {skill.release_date}
-        </p>
-      </div>
-      <div className="flex items-center mt-3">
-        <Progress
-          borderRadius={5}
-          bgColor={"#1175da"}
-          sx={{ ">div": { bgColor: "#fff" } }}
-          height={1}
-          value={skill.progress}
-          className="flex-1 mr-5"
-        />
-        <span className="text-blue-400 text-md font-medium">
-          {skill.progress}%
-        </span>
+        <div className="flex items-center mt-3">
+          <Progress
+            borderRadius={5}
+            bgColor={"#1175da"}
+            sx={{ ">div": { bgColor: "#fff" } }}
+            height={1}
+            value={skill.progress}
+            className="flex-1 mr-5"
+          />
+          <span className="text-blue-400 text-md font-medium">
+            {skill.progress}%
+          </span>
+        </div>
       </div>
     </Box>
   );
