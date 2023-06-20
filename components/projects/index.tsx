@@ -10,7 +10,6 @@ import {
 import ErrorView from "components/error";
 import moment from "moment";
 import { IProject, useProject } from "queries";
-import React from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 import { BsArrowRight } from "react-icons/bs";
 
@@ -57,13 +56,13 @@ const ProjectsView = ({ query }: Props) => {
                 <h5 className="text-blue-300 text-md mb-1">
                   <Skeleton width={"80px"} height="20px" />
                 </h5>
-                <p className="font-medium text-md text-white">
+                <div className="font-medium text-md text-white">
                   <Skeleton width={"150px"} height="20px" />
-                </p>
+                </div>
               </div>
-              <p className="ml-auto text-white self-end p-1 px-2  rounded-sm text-xs">
+              <div className="ml-auto text-white self-end p-1 px-2  rounded-sm text-xs">
                 <Skeleton width={150} height="20px" />
-              </p>
+              </div>
             </div>
             <div className="flex items-center mt-3">
               <Skeleton height="10px" />

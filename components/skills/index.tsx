@@ -1,8 +1,15 @@
-import { Box, Heading, Progress, SimpleGrid, Skeleton } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Heading,
+  Progress,
+  SimpleGrid,
+  Skeleton,
+} from "@chakra-ui/react";
 import ErrorView from "components/error";
+import { AuthContext } from "context/authContext";
 import { ISkill, useSkill } from "queries";
-import React from "react";
-import Avatar from "react-avatar";
+import { useContext } from "react";
 import { AiOutlineClockCircle } from "react-icons/ai";
 
 type Props = {};
@@ -16,6 +23,7 @@ const skill = {
 };
 
 const SkillsView = (props: Props) => {
+  const { isAdmin } = useContext(AuthContext);
   const { data, isLoading, isError, error } = useSkill();
 
   if (isError) {
@@ -48,13 +56,13 @@ const SkillsView = (props: Props) => {
                 <h5 className="text-blue-300 text-md mb-1">
                   <Skeleton width={"80px"} height="20px" />
                 </h5>
-                <p className="font-medium text-md text-white">
+                <div className="font-medium text-md text-white">
                   <Skeleton width={"150px"} height="20px" />
-                </p>
+                </div>
               </div>
-              <p className="ml-auto text-white self-end p-1 px-2  rounded-sm text-xs">
+              <div className="ml-auto text-white self-end p-1 px-2  rounded-sm text-xs">
                 <Skeleton width={150} height="20px" />
-              </p>
+              </div>
             </div>
             <div className="flex items-center mt-3">
               <Skeleton height="10px" />
@@ -68,11 +76,18 @@ const SkillsView = (props: Props) => {
     );
   }
   return (
-    <SimpleGrid columns={2} spacing={5}>
-      {data &&
-        data?.length > 0 &&
-        data?.map((skill) => <Skill key={skill._id} skill={skill} />)}
-    </SimpleGrid>
+    <>
+      {isAdmin && (
+        <div className="flex justify-end">
+          <Button colorScheme="blue">Add Skill</Button>
+        </div>
+      )}
+      <SimpleGrid columns={2} spacing={5}>
+        {data &&
+          data?.length > 0 &&
+          data?.map((skill) => <Skill key={skill._id} skill={skill} />)}
+      </SimpleGrid>
+    </>
   );
 };
 
@@ -100,13 +115,7 @@ function Skill({ skill }: { skill: ISkill }) {
       </Heading>
       <div className="absolute left-0 bottom-3 w-full px-5">
         <div className="mt-8 flex items-center gap-4">
-          <Avatar
-            size="55"
-            color="white"
-            fgColor="blue"
-            round={"5px"}
-            name={skill.creator}
-          />
+          {skill.creator}
           <div>
             <h5 className="text-blue-300 text-md mb-1">Created By</h5>
             <p className="font-medium text-md text-white">{skill.creator}</p>
